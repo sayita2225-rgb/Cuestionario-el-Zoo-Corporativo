@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Zoo Corporativo | Test de Autoconocimiento y Empleabilidad</title>
+    <style>
+        :root {
+            --primary: #1e293b;
+            --secondary: #0f172a;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #334155;
+            --border: #e2e8f0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            width: 100%;
+            max-width: 650px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            padding: 40px;
+            margin: 20px;
+            box-sizing: border-box;
+        }
+        h1 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-top: 0;
+            text-align: center;
+        }
+        p.subtitle {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+        .step {
+            display: none;
+        }
+        .step.active {
+            display: block;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        input[type="text"], input[type="email"], textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+        .question-box {
+            margin-bottom: 25px;
+        }
+        .question-box p {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        .options label {
+            font-weight: normal;
+            display: flex;
+            align-items: center;
+            background: #f1f5f9;
+            padding: 10px 14px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .options label:hover {
+            background: #e2e8f0;
+        }
+        .options input {
+            margin-right: 10px;
+        }
+        button {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: var(--accent-hover);
+        }
+        .result-card {
+            background: #f8fafc;
+            border-left: 5px solid var(--accent);
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 20px;
+        }
+        .result-card h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+        ul {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        li {
+            margin-bottom: 6px;
+        }
+        .loading {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #64748b;
+            padding: 40px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>El Zoo Corporativo</h1>
+    <p class="subtitle">Descubre tu arquetipo profesional y potencia tu empleabilidad</p>
+
+    <!-- PASO 1: Datos Básicos -->
+    <div id="step-1" class="step active">
+        <label for="nombre">Nombre Completo:</label>
+        <input type="text" id="nombre" placeholder="Ej. Sandra Morales">
+
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" placeholder="tucorreo@ejemplo.com">
+
+        <label for="cargo">Cargo o Perfil Actual:</label>
+        <input type="text" id="cargo" placeholder="Ej. Gerente de Talento Humano">
+
+        <button onclick="nextStep(2)">Comenzar Diagnóstico</button>
+    </div>
+
+    <!-- PASO 2: Autopercepción y Estilo -->
+    <div id="step-2" class="step">
+        <div class="question-box">
+            <p>1. ¿Cómo defines principalmente tu estilo de trabajo frente a los objetivos de la empresa?</p>
+            <div class="options">
+                <label><input type="radio" name="p1" value="abeja"> Trabajo en red con orientación milimétrica a objetivos comunes[span_0](start_span)[span_0](end_span).</label>
+                <label><input type="radio" name="p1" value="aguila"> Con visión estratégica a largo plazo y enfoque en resolver problemas complejos[span_1](start_span)[span_1](end_span).</label>
+                <label><input type="radio" name="p1" value="buho"> Mediante un pensamiento analítico profundo y objetividad impecable[span_2](start_span)[span_2](end_span).</label>
+                <label><input type="radio" name="p1" value="caballo"> Con espíritu de equipo, lealtad y gran resistencia ante cargas pesadas[span_3](start_span)[span_3](end_span).</label>
+                <label><input type="radio" name="p1" value="colibri"> Con alta versatilidad, energía para múltiples tareas y rapidez de adaptación[span_4](start_span)[span_4](end_span).</label>
+                <label><input type="radio" name="p1" value="delfin"> Facilitando la comunicación y resolviendo tensiones con inteligencia social[span_5](start_span)[span_5](end_span).</label>
+                <label><input type="radio" name="p1" value="elefante"> Aportando estabilidad emocional y memoria organizativa a proyectos grandes[span_6](start_span)[span_6](end_span).</label>
+                <label><input type="radio" name="p1" value="gato"> Desde la independencia total, autogestión e intuición afilada[span_7](start_span)[span_7](end_span).</label>
+                <label><input type="radio" name="p1" value="hormiga"> Con disciplina férrea, productividad sistemática y un gran sentido del deber[span_8](start_span)[span_8](end_span).</label>
+                <label><input type="radio" name="p1" value="leon"> Asumiendo liderazgo natural y coraje para decisiones difíciles[span_9](start_span)[span_9](end_span).</label>
+                <label><input type="radio" name="p1" value="lobo"> Fomentando sentido de pertenencia al clan y respeto por la jerarquía[span_10](start_span)[span_10](end_span).</label>
+                <label><input type="radio" name="p1" value="mariposa"> Reinventándome constantemente con flexibilidad extrema y creatividad[span_11](start_span)[span_11](end_span).</label>
+                <label><input type="radio" name="p1" value="oso"> Ofreciendo seguridad, protección firme y paciencia a largo plazo[span_12](start_span)[span_12](end_span).</label>
+                <label><input type="radio" name="p1" value="perro"> Brindando fidelidad extrema, colaboración y calidez en el clima laboral[span_13](start_span)[span_13](end_span).</label>
+                <label><input type="radio" name="p1" value="tigre"> Manteniendo autonomía absoluta y un enfoque feroz en los resultados[span_14](start_span)[span_14](end_span).</label>
+                <label><input type="radio" name="p1" value="tortuga"> Con constancia inquebrantable, ritmo metódico y paciencia estratégica[span_15](start_span)[span_15](end_span).</label>
+            </div>
+        </div>
+        <button onclick="nextStep(3)">Siguiente</button>
+    </div>
+
+    <!-- PASO 3: Validación con Trayectoria (Evidencias) -->
+    <div id="step-3" class="step">
+        <div class="question-box">
+            <p>2. Trayectoria y Retos Laborales</p>
+            <label for="evidencia">Describe brevemente una situación laboral compleja reciente y cómo la resolviste:</label>
+            <textarea id="evidencia" placeholder="Describe un reto, crisis o proyecto donde tomaste decisiones clave..."></textarea>
+        </div>
+        <button onclick="calculateResult()">Generar Diagnóstico Profesional</button>
+    </div>
+
+    <!-- PASO 4: Resultados -->
+    <div id="step-4" class="step">
+        <div id="loading-view" class="loading">
+            Analizando evidencias y cruzando con los 15 arquetipos corporativos...
+        </div>
+        <div id="result-content" style="display: none;">
+            <div class="result-card">
+                <h3 id="res-animal">Arquetipo</h3>
+                <p><strong>Estilo Profesional:</strong> <span id="res-estilo"></span></p>
+                
+                <p><strong>💡 Fortalezas Laborales:</strong></p>
+                <ul id="res-fortalezas"></ul>
+
+                <p><strong>⚠️ Sombras y Puntos Ciegos:</strong></p>
+                <ul id="res-sombras"></ul>
+
+                <p><strong>🚀 Plan de Mejora y Desarrollo:</strong></p>
+                <p id="res-mejora"></p>
+
+                <p><strong>🎓 Diplomado Sugerido:</strong></p>
+                <p id="res-diplomado" style="font-weight: 600; color: var(--accent);"></p>
+            </div>
+            <button onclick="location.reload()">Realizar otro test</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const arquetiposData = {
+        abeja: {
+            nombre: "La Abeja",
+            estilo: "Colaboración sistémica[span_16](start_span)[span_16](end_span)",
+            fortalezas: ["Trabajo en red impecable[span_17](start_span)[span_17](end_span)", "Orientación milimétrica a objetivos comunes[span_18](start_span)[span_18](end_span)", "Eficiencia productiva y valor directo[span_19](start_span)[span_19](end_span)"],
+            sombras: ["Subordinación estricta al sistema[span_20](start_span)[span_20](end_span)", "Falta de iniciativa para romper moldes[span_21](start_span)[span_21](end_span)", "Vulnerabilidad al colapso si falla la estructura[span_22](start_span)[span_22](end_span)"],
+            mejora: "Desarrollar iniciativa propia para proponer mejoras independientes y cultivar visión estratégica[span_23](start_span)[span_23](end_span).",
+            diplomado: "Diplomado en Liderazgo Estratégico y Gestión de la Proactividad Organizacional[span_24](start_span)[span_24](end_span)."
+        },
+        aguila: {
+            nombre: "El Águila",
+            estilo: "Visión estratégica[span_25](start_span)[span_25](end_span)",
+            fortalezas: ["Visión estratégica a largo plazo[span_26](start_span)[span_26](end_span)", "Identificación temprana de oportunidades de negocio[span_27](start_span)[span_27](end_span)", "Enfoque láser para resolver problemas complejos[span_28](start_span)[span_28](end_span)"],
+            sombras: ["Desconexión del equipo operativo[span_29](start_span)[span_29](end_span)", "Impaciencia ante procesos lentos[span_30](start_span)[span_30](end_span)", "Postura distante o individualista[span_31](start_span)[span_31](end_span)"],
+            mejora: "Acercarse a la operación diaria, practicar la escucha activa y cultivar paciencia[span_32](start_span)[span_32](end_span).",
+            diplomado: "Diplomado en Habilidades Directivas, Empatía y Comunicación Asertiva[span_33](start_span)[span_33](end_span)."
+        },
+        buho: {
+            nombre: "El Búho",
+            estilo: "Análisis y sabiduría[span_34](start_span)[span_34](end_span)",
+            fortalezas: ["Pensamiento analítico profundo[span_35](start_span)[span_35](end_span)", "Objetividad impecable para la toma de decisiones[span_36](start_span)[span_36](end_span)", "Sabiduría para asesorar estratégicamente[span_37](start_span)[span_37](end_span)"],
+            sombras: ["Tendencia a sobrepensar (parálisis por análisis)[span_38](start_span)[span_38](end_span)", "Distanciamiento emocional del equipo[span_39](start_span)[span_39](end_span)", "Hipercrítica ante errores ajenos[span_40](start_span)[span_40](end_span)"],
+            mejora: "Tomar decisiones con información imperfecta y practicar la empatía constructiva[span_41](start_span)[span_41](end_span).",
+            diplomado: "Diplomado en Inteligencia Emocional y Toma de Decisiones Estratégicas[span_42](start_span)[span_42](end_span)."
+        },
+        caballo: {
+            nombre: "El Caballo",
+            estilo: "Impulso y resistencia[span_43](start_span)[span_43](end_span)",
+            fortalezas: ["Espíritu de equipo y lealtad inquebrantable[span_44](start_span)[span_44](end_span)", "Impulso para la ejecución de proyectos[span_45](start_span)[span_45](end_span)", "Gran resistencia ante jornadas intensas[span_46](start_span)[span_46](end_span)"],
+            sombras: ["Resistencia a cambios de dirección[span_47](start_span)[span_47](end_span)", "Obstinación en métodos tradicionales[span_48](start_span)[span_48](end_span)", "Riesgo de agotamiento por exceso de entrega[span_49](start_span)[span_49](end_span)"],
+            mejora: "Desarrollar flexibilidad ante cambios y aprender a dosificar la energía[span_50](start_span)[span_50](end_span).",
+            diplomado: "Diplomado en Gestión del Cambio y Desarrollo de la Resiliencia Laboral[span_51](start_span)[span_51](end_span)."
+        },
+        colibri: {
+            nombre: "El Colibrí",
+            estilo: "Versatilidad y agilidad[span_52](start_span)[span_52](end_span)",
+            fortalezas: ["Alta versatilidad y multitarea simultánea[span_53](start_span)[span_53](end_span)", "Rapidez de adaptación al cambio[span_54](start_span)[span_54](end_span)", "Optimismo contagioso frente a los retos[span_55](start_span)[span_55](end_span)"],
+            sombras: ["Dispersión en proyectos de largo aliento[span_56](start_span)[span_56](end_span)", "Agotamiento por querer estar en todo[span_57](start_span)[span_57](end_span)", "Falta de profundidad en procesos complejos[span_58](start_span)[span_58](end_span)"],
+            mejora: "Comprometerse con la profundidad de los proyectos y estructurar metas secuenciales[span_59](start_span)[span_59](end_span).",
+            diplomado: "Diplomado en Gestión del Tiempo, Enfoque y Productividad Ejecutiva[span_60](start_span)[span_60](end_span)."
+        },
+        delfin: {
+            nombre: "El Delfín",
+            estilo: "Inteligencia social[span_61](start_span)[span_61](end_span)",
+            fortalezas: ["Inteligencia social sobresaliente[span_62](start_span)[span_62](end_span)", "Facilitador de la comunicación y resolución de tensiones[span_63](start_span)[span_63](end_span)", "Liderazgo basado en inspiración y alegría[span_64](start_span)[span_64](end_span)"],
+            sombras: ["Evitación de conflictos profundos[span_65](start_span)[span_65](end_span)", "Distracción ante metas rígidas[span_66](start_span)[span_66](end_span)", "Dependencia de ambientes estimulantes[span_67](start_span)[span_67](end_span)"],
+            mejora: "Afrontar los conflictos directos y alinear la flexibilidad con metas organizacionales[span_68](start_span)[span_68](end_span).",
+            diplomado: "Diplomado en Negociación, Mediación y Resolución de Conflictos Laborales[span_69](start_span)[span_69](end_span)."
+        },
+        elefante: {
+            nombre: "El Elefante",
+            estilo: "Estabilidad y memoria[span_70](start_span)[span_70](end_span)",
+            fortalezas: ["Memoria organizativa privilegiada[span_71](start_span)[span_71](end_span)", "Estabilidad emocional y solidez[span_72](start_span)[span_72](end_span)", "Protección a talentos junior[span_73](start_span)[span_73](end_span)"],
+            sombras: ["Dificultad extrema ante cambios ágiles (inercia)[span_74](start_span)[span_74](end_span)", "Acumulación de frustraciones silenciosas[span_75](start_span)[span_75](end_span)"],
+            mejora: "Acelerar respuesta ante reestructuraciones y expresar desacuerdos a tiempo[span_76](start_span)[span_76](end_span).",
+            diplomado: "Diplomado en Adaptabilidad al Cambio y Agilidad Emocional en las Organizaciones[span_77](start_span)[span_77](end_span)."
+        },
+        gato: {
+            nombre: "El Gato",
+            estilo: "Autogestión e intuición[span_78](start_span)[span_78](end_span)",
+            fortalezas: ["Independencia total y alta autogestión[span_79](start_span)[span_79](end_span)", "Intuición para detectar riesgos ocultos[span_80](start_span)[span_80](end_span)", "Elegancia estratégica para resolver problemas[span_81](start_span)[span_81](end_span)"],
+            sombras: ["Resistencia a directrices rígidas[span_82](start_span)[span_82](end_span)", "Recelo ante colaboración estrecha[span_83](start_span)[span_83](end_span)", "Tendencia a desaparecer ante el caos[span_84](start_span)[span_84](end_span)"],
+            mejora: "Tolerar directrices estandarizadas y propiciar comunicación cercana con el equipo[span_85](start_span)[span_85](end_span).",
+            diplomado: "Diplomado en Trabajo en Equipo e Inteligencia Relacional[span_86](start_span)[span_86](end_span)."
+        },
+        hormiga: {
+            nombre: "La Hormiga",
+            estilo: "Disciplina y productividad[span_87](start_span)[span_87](end_span)",
+            fortalezas: ["Disciplina férrea y enfoque en productividad[span_88](start_span)[span_88](end_span)", "Planificación a futuro impecable[span_89](start_span)[span_89](end_span)", "Sentido del deber colaborativo insuperable[span_90](start_span)[span_90](end_span)"],
+            sombras: ["Rigidez ante esquemas fuera de lo planeado[span_91](start_span)[span_91](end_span)", "Incapacidad para desconectar (riesgo de burnout)[span_92](start_span)[span_92](end_span)"],
+            mejora: "Incorporar pausas de descanso y desarrollar flexibilidad mental ante cambios[span_93](start_span)[span_93](end_span).",
+            diplomado: "Diplomado en Bienestar Laboral, Prevención del Burnout y Flexibilidad Cognitiva[span_94](start_span)[span_94](end_span)."
+        },
+        leon: {
+            nombre: "El León",
+            estilo: "Liderazgo ejecutivo[span_95](start_span)[span_95](end_span)",
+            fortalezas: ["Liderazgo natural y coraje para decisiones difíciles[span_96](start_span)[span_96](end_span)", "Capacidad de protección del equipo[span_97](start_span)[span_97](end_span)", "Magnética presencia ejecutiva[span_98](start_span)[span_98](end_span)"],
+            sombras: ["Tendencia a acaparar protagonismo[span_99](start_span)[span_99](end_span)", "Necesidad imperiosa de control[span_100](start_span)[span_100](end_span)", "Estilo autoritario bajo presión[span_101](start_span)[span_101](end_span)"],
+            mejora: "Practicar liderazgo facilitador y ceder protagonismo a talentos emergentes[span_102](start_span)[span_102](end_span).",
+            diplomado: "Diplomado en Liderazgo Transformacional y Desarrollo de Equipos de Alto Rendimiento[span_103](start_span)[span_103](end_span)."
+        },
+        lobo: {
+            nombre: "El Lobo",
+            estilo: "Pertenencia y estrategia de clan[span_104](start_span)[span_104](end_span)",
+            fortalezas: ["Sentido de pertenencia grupal[span_105](start_span)[span_105](end_span)", "Coordinación de estrategias de equipo[span_106](start_span)[span_106](end_span)", "Lealtad a códigos colectivos y jerarquía[span_107](start_span)[span_107](end_span)"],
+            sombras: ["Dependencia de validación del clan[span_108](start_span)[span_108](end_span)", "Desconfianza hacia externos o nuevos métodos[span_109](start_span)[span_109](end_span)"],
+            mejora: "Abrir la mente a propuestas innovadoras externas y fomentar autonomía individual[span_110](start_span)[span_110](end_span).",
+            diplomado: "Diplomado en Innovación Abierta, Creatividad y Pensamiento Disruptivo[span_111](start_span)[span_111](end_span)."
+        },
+        mariposa: {
+            nombre: "La Mariposa",
+            estilo: "Transformación y reinvención[span_112](start_span)[span_112](end_span)",
+            fortalezas: ["Reinvención y gestión de transiciones[span_113](start_span)[span_113](end_span)", "Flexibilidad extrema y creatividad fresca[span_114](start_span)[span_114](end_span)"],
+            sombras: ["Inconstancia o miedo a la permanencia prolongada[span_115](start_span)[span_115](end_span)", "Dificultad para enraizarse en procesos estables[span_116](start_span)[span_116](end_span)"],
+            mejora: "Comprometerse con la estabilidad a mediano plazo y fortalecer resiliencia operativa[span_117](start_span)[span_117](end_span).",
+            diplomado: "Diplomado en Gestión de Proyectos, Estabilidad Operativa y Compromiso Organizacional[span_118](start_span)[span_118](end_span)."
+        },
+        oso: {
+            nombre: "El Oso",
+            estilo: "Seguridad y solidez[span_119](start_span)[span_119](end_span)",
+            fortalezas: ["Estabilidad y apoyo firme al equipo[span_120](start_span)[span_120](end_span)", "Profundo sentido de seguridad corporativa[span_121](start_span)[span_121](end_span)", "Paciencia para consolidar proyectos[span_122](start_span)[span_122](end_span)"],
+            sombras: ["Resistencia a salir de la zona de confort[span_123](start_span)[span_123](end_span)", "Pasividad ante crisis imprevistas[span_124](start_span)[span_124](end_span)"],
+            mejora: "Entrenar adaptabilidad ante urgencias y apertura a nuevas metodologías[span_125](start_span)[span_125](end_span).",
+            diplomado: "Diplomado en Gestión de Crisis y Resolución Creativa de Problemas[span_126](start_span)[span_126](end_span)."
+        },
+        perro: {
+            nombre: "El Perro",
+            estilo: "Fidelidad y clima laboral[span_127](start_span)[span_127](end_span)",
+            fortalezas: ["Fidelidad extrema a la organización o líder[span_128](start_span)[span_128](end_span)", "Disposición absoluta para colaborar[span_129](start_span)[span_129](end_span)", "Fomento de un clima cálido y unido[span_130](start_span)[span_130](end_span)"],
+            sombras: ["Dependencia de validación externa[span_131](start_span)[span_131](end_span)", "Dificultad para decir 'no' ante sobrecarga[span_132](start_span)[span_132](end_span)"],
+            mejora: "Trabajar en asertividad para fijar límites y fortalecer la validación interna[span_133](start_span)[span_133](end_span).",
+            diplomado: "Diplomado en Asertividad, Comunicación Efectiva y Desarrollo Personal[span_134](start_span)[span_134](end_span)."
+        },
+        tigre: {
+            nombre: "El Tigre",
+            estilo: "Autonomía y enfoque feroz[span_135](start_span)[span_135](end_span)",
+            fortalezas: ["Autonomía absoluta[span_136](start_span)[span_136](end_span)", "Valentía para asumir riesgos calculados[span_137](start_span)[span_137](end_span)", "Enfoque feroz en resultados y liderazgo individual[span_138](start_span)[span_138](end_span)"],
+            sombras: ["Individualismo radical[span_139](start_span)[span_139](end_span)", "Dificultad para delegar o trabajar en equipo[span_140](start_span)[span_140](end_span)", "Reacciones impulsivas ante desacuerdos[span_141](start_span)[span_141](end_span)"],
+            mejora: "Fomentar interdependencia y aprender a delegar funciones operativas[span_142](start_span)[span_142](end_span).",
+            diplomado: "Diplomado en Habilidades Gerenciales, Trabajo en Equipo y Delegación Efectiva[span_143](start_span)[span_143](end_span)."
+        },
+        tortuga: {
+            nombre: "La Tortuga",
+            estilo: "Constancia y paciencia estratégica[span_144](start_span)[span_144](end_span)",
+            fortalezas: ["Constancia inquebrantable[span_145](start_span)[span_145](end_span)", "Ritmo de trabajo metódico y seguro[span_146](start_span)[span_146](end_span)", "Resiliencia para proteger proyectos[span_147](start_span)[span_147](end_span)"],
+            sombras: ["Exceso de lentitud en entornos ágiles[span_148](start_span)[span_148](end_span)", "Resistencia al cambio y aislamiento bajo presión[span_149](start_span)[span_149](end_span)"],
+            mejora: "Desarrollar velocidad de reacción y exposición pública de ideas[span_150](start_span)[span_150](end_span).",
+            diplomado: "Diplomado en Oratoria, Comunicación Ejecutiva y Marca Personal[span_151](start_span)[span_151](end_span)."
+        }
+    };
+
+    function nextStep(step) {
+        if(step === 2) {
+            const nombre = document.getElementById('nombre').value;
+            if(!nombre) {
+                alert('Por favor ingresa tu nombre para continuar.');
+                return;
+            }
+        }
+        document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
+        document.getElementById('step-' + step).classList.add('active');
+    }
+
+    function calculateResult() {
+        const selectedRadio = document.querySelector('input[name="p1"]:checked');
+        if(!selectedRadio) {
+            alert('Por favor selecciona una opción en el test.');
+            return;
+        }
+
+        document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
+        document.getElementById('step-4').classList.add('active');
+
+        // Simular tiempo de procesamiento de IA / análisis
+        setTimeout(() => {
+            const animalKey = selectedRadio.value;
+            const data = arquetiposData[animalKey] || arquetiposData['aguila'];
+
+            document.getElementById('res-animal').innerText = data.nombre;
+            document.getElementById('res-estilo').innerText = data.estilo;
+            
+            const fortalezasList = document.getElementById('res-fortalezas');
+            fortalezasList.innerHTML = '';
+            data.fortalezas.forEach(f => {
+                const li = document.createElement('li');
+                li.innerText = f;
+                fortalezasList.appendChild(li);
+            });
+
+            const sombrasList = document.getElementById('res-sombras');
+            sombrasList.innerHTML = '';
+            data.sombras.forEach(s => {
+                const li = document.createElement('li');
+                li.innerText = s;
+                sombrasList.appendChild(li);
+            });
+
+            document.getElementById('res-mejora').innerText = data.mejora;
+            document.getElementById('res-diplomado').innerText = data.diplomado;
+
+            document.getElementById('loading-view').style.display = 'none';
+            document.getElementById('result-content').style.display = 'block';
+        }, 1500);
+    }
+</script>
+
+</body>
+</html>
